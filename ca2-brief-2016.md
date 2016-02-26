@@ -1,6 +1,6 @@
-++ Computational Intelligence - Assignment 2
+# Computational Intelligence - Assignment 2
 
-++++ Introduction
+## Introduction
 
 Download the code from the following GitHub repository.
 
