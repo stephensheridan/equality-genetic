@@ -191,9 +191,10 @@ public class Population{
      }
 	
 	 // Called to envoke one complete evolution		 
-     public void evolve()
+     public void evolve(boolean display)
      {
 		 //TODO: Evaluate, sort, display, crossover, mutate, remove duplicates
+		 // Only call display if display == true
      }
 	 
 	 // Display the population

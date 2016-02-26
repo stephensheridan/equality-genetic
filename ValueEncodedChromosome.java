@@ -24,12 +24,12 @@ public class ValueEncodedChromosome{
 	
 	// Returns gene value at given locus
 	public int getGeneAt(int pos){
-		return genes[pos];
+		//TODO
 	}
 	
 	// Used for changing a gene value at given locus in chromosome
 	public void setGeneAt(int pos, int val){
-		genes[pos] = val;
+		//TODO
 	}
 	
 	// Will mutate a gene at given locus based on random value between 1 and upper_bound
@@ -39,40 +39,32 @@ public class ValueEncodedChromosome{
 	
 	// Sets the chromosome length
 	public void setLength(int length){
-		this.length = length;
+		//TODO
 	}
 	
 	// Returns the length of a chromosome
 	public int getLength(){
-		return length;
+		//TODO
 	}
 	
 	// Sets the fitness value for a chromosome
 	public void setFitness(int fitness){
-		this.fitness = fitness;
+		//TODO
 	}
 	
 	// Returns the fitness value for a chromosome
 	public int getFitness(){
-		return fitness;
+		//TODO
 	}
 	
 	// Used to compare chromosomes in order to remove duplicates
 	// Compare this chromosome against argument c
 	public boolean equals(ValueEncodedChromosome c){
-		boolean same = true;
-		for(int i = 0; i < length && same == true; i++){
-			same = genes[i] == c.getGeneAt(i);
-		}
-		return same;
+		//TODO
 	}
 	
 	// Helps to show chromosome values on screen
 	public String toString(){
-		String s = "";
-		for(int i = 0; i < length; i++){
-			s = s + genes[i] + " ";
-		}
-		return s;
+		//TODO
 	}
 }
