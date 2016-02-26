@@ -14,11 +14,11 @@ https://github.com/stephensheridan/equality-genetic
 
 The GitHub repository consists of five files that you will have to modify in order to complete the assessment. The following is a brief description of each file, you should inspect the files for detailed code comments that explain what is going on in a little more detail.
 
-1. Genetic.java :- This is the main driver file for the genetic algorithm
-2. GeneticParameterTrial.java :- This file is similar to Genetic.java but automates the testing of some trial genetic parameters such as population_size, crossover_rate and mutation_rate.
-3. Population.java :- This file implements a population of value encoded chromosomes. All the operations associated with the population of candidate solutions are implemented here.
-4. ValueEncodedChromosome.java :- This class represents a single value encoded chromosome.
-5. README.md :- This file contains all of the info contained in this document in markdown form. That's the GitHub way.
+1. __Genetic.java__ :- This is the main driver file for the genetic algorithm
+2. __GeneticParameterTrial.java___ :- This file is similar to Genetic.java but automates the testing of some trial genetic parameters such as population_size, crossover_rate and mutation_rate.
+3. __Population.java__ :- This file implements a population of value encoded chromosomes. All the operations associated with the population of candidate solutions are implemented here.
+4. __ValueEncodedChromosome.java__ :- This class represents a single value encoded chromosome.
+5. __README.md__ :- This file contains all of the info contained in this document in markdown form. That's the GitHub way.
 
 If you have not used GitHub before or don't know anything about it, now is your time to find out about it. Having working knowledge of a version control system like GitHub is essential industry experience. Trust me it will really stand to you if you spend a little time learning GitHub. So create your GitHub account now and get going.
 
@@ -34,7 +34,7 @@ The second part of this assessment is to run a number of experiments that will t
 2. Vary the *crossover_fraction* from 0% to 100% while keeping the *population_size = 50* and the *mutation_fraction = 20%*
 3. Vary the *mutation_fraction* from 0% to 300% while keeping the *population_size = 50* and the *crossover_fraction = 50%*
 
-All experiments must average the number of generations taken over 10 runs *NUM_REPEAT_AVG = 10* and must set the maximum number of generations for each trial to 200 *NUM_GENERATIONS = 200*.
+All experiments must average the number of generations taken over 10 runs (*NUM_REPEAT_AVG = 10*) and must set the maximum number of generations for each trial to 200 (*NUM_GENERATIONS = 200*).
 
 #### Task 3 - 5%
 Create a PDF document that explains the code changes you made in *task 1*. List each method and give a very brief explanation of what it does. Your documentation should also show a graph for each experiment in *task 2* and a brief description of what the graph shows in terms of how the parameters trial effected the number of generations required to converge.
