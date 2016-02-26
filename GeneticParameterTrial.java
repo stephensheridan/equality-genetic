@@ -8,8 +8,8 @@ import java.util.*;
 public class GeneticParameterTrial {
 	
 	private static final int NUM_TRIALS = 10; // 10 trial values for each parameters, see trial arrays below
-	private static final int NUM_GENERATIONS = 100; // Max number of generations to run for
-	private static final int NUM_REPEATS = 10; // Repeat this number of times to get an average for a particular trial value
+	private static final int NUM_GENERATIONS = 200; // Max number of generations to run for
+	private static final int NUM_REPEATS_AVG = 10; // Repeat this number of times to get an average for a particular trial value
 	private static final int CHROMOSOME_LENGTH = 4; // Fix chromosome length at 4 a,b,c,d values
 	
 	// Setup our trial values for each parameter
@@ -29,13 +29,13 @@ public class GeneticParameterTrial {
 		double avg = 0;
 		
 		// **************************************************************************************************
-		// Make a TRIAL
+		// Make a experimental TRIAL
 		// Setup a particular trial - in this case we are fixing all parameters except the crossover fraction
 		int population_param = POPULATION_TRIALS[2]; // This is how you keep a fixed population size [2] = 15
 		float mutation_param = MUTATION_TRIALS[1]; // This is how you keep a fixed mutation fraction [1] = 1%
 		float[] current_trial = CROSSOVER_TRIALS;
 		String trial_name = "Mutation fraction";
-		// NOTE: change this block for different trials
+		// NOTE: change this block for different trials/experiments
 		// **************************************************************************************************
 			
 		// Test the genetic algorithm over 5 trials
@@ -43,7 +43,7 @@ public class GeneticParameterTrial {
 			
 			// Reset our generation counter
 			cummulativeGenerations = 0;
-			for(int j = 0; j < NUM_REPEATS; j++){
+			for(int j = 0; j < NUM_REPEATS_AVG; j++){
 				
 				// Create a population using particular trial data
 				Population p = new Population(population_param, CHROMOSOME_LENGTH, current_trial[i], mutation_param);
@@ -61,7 +61,7 @@ public class GeneticParameterTrial {
 			}
 			
 			// Calculate the average number of generations for this test value over NUM_REPEATS
-			avg = cummulativeGenerations / NUM_REPEATS;
+			avg = cummulativeGenerations / NUM_REPEATS_AVG;
 			
 			// Store the result
 			results = results + current_trial[i] + "," + avg + "\n";
