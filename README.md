@@ -30,7 +30,7 @@ In task 1 your job is to complete the TODO sections that are listed in the GitHu
 #### Task 2 - 5%
 The second part of this assessment is to run a number of experiments that will test the effects of changing the GA parameters *population_size*, *crossover_fraction*, and *mutation_fraction* on the number of generations the GA takes to converge. You will need to execute the *__GeneticParameterTrial.java__* file in order to run the experiments. This file is already coded to run an experiment where the *crossover_fraction* is modified while the *population_size* and *mutation_rate* remain constant. When you look at the code in *__GeneticParameterTrial.java__* you will see a section marked out where the experiment is setup. The rest of the code is generic and you should not have to modify it. NOTE: the only output from this java program will be a table of values that can be easily graphed in MS Excel or any other graphing tool. For each experiment or trial you will get a table of values that can be graphed. You must run and graph three experiments as follows:
 
-1. Vary the *population_size* from 5 to 1000 while keeping the *crossover_fraction = 50%* and the *mutation_fraction = 2%*
+1. Vary the *population_size* from 5 to 1000 while keeping the *crossover_fraction = 50%* and the *mutation_fraction = 20%*
 2. Vary the *crossover_fraction* from 0% to 100% while keeping the *population_size = 50* and the *mutation_fraction = 20%*
 3. Vary the *mutation_fraction* from 0% to 300% while keeping the *population_size = 50* and the *crossover_fraction = 50%*
 
