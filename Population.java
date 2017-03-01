@@ -34,7 +34,6 @@ public class Population{
         // Build a roulette wheel array for selecting parents
 		buildRouletteWheel();
 	}
-	
 	// Ranomise the population
 	public void initialisePopulation(){
 		// Create an array of integer based value encoded chromosomes
@@ -44,8 +43,6 @@ public class Population{
 			population[i] = new ValueEncodedChromosome(chromosome_length, 30);
 		}
 	}
-	
-	// Build a roulette wheel for parent selection
 	public void buildRouletteWheel(){
         // Build a roulette wheel array for selecting parents
 		rouletteWheelSize = 0;
@@ -65,49 +62,43 @@ public class Population{
  		   num_trials--;
         }
 	}
-	
 	// Set the population size
 	public void setPopulationSize(int size){
 		population_size = size;
 	}
-	
 	// Set the crossover fraction
 	public void setCrossoverFraction(float cf){
 		crossoverFraction = cf;
 	}
-	
 	// Set the mutation fraction
 	public void setMutationFraction(float mf){
 		mutationFraction = mf;
 	}
-	
 	// Return a chromosome at given position in population
 	public ValueEncodedChromosome getChromosomeAt(int pos){
 		return population[pos];
 	}
-	
 	// Set the value of a chromosome at given position in population
 	public void setChromosomeAt(int pos, ValueEncodedChromosome c){
 		population[pos] = c;
 	}
-	
 	// Return the size of the population
 	public int getSize(){
 		return population_size;
 	}
-	
 	// Return fitness for given set of values based on a +2 b +3 c +4 d = 30
 	// The closer a + 2*b + 3*c + 4*d is to 30 the lower the difference, therefore fitness is high
 	public int fitness(int a, int b, int c, int d){
-		// TODO: Calculate the difference between chromosome solution and required equivalance of 30
+		// Calculate the difference between chromosome solution and required equivalance of 30
+		int f = Math.abs(( a + (2*b) + (3*c) + (4*d) ) - 30);
+		return f;
 	}
 	
 	// If the fitness for the top chromosome is zero then we 
-	// have found a solution to a + 2b + 3c + 4d = 30
+	// have found a solution to a +2 b +3 c +4 d = 30
 	public boolean converged(){
-		//TODO: return boolean value based on whether we have found a solution (True = converged, False = not converged)
+		return (population[0].getFitness() == 0);
 	}
-	
 	// Swap populaiton members
 	public void swap(int i, int k){
 		ValueEncodedChromosome temp;
@@ -115,7 +106,6 @@ public class Population{
 		population[i] = population[k];
 		population[k] = temp;
 	}
-	
 	// Sort the population based on their fitness ASCENDING (lower number better fitness)
 	public void sort(){
 		int i, j, first, temp;  
@@ -133,7 +123,14 @@ public class Population{
 	
  	// Set the fitness function for each populaiton member
  	public void evaluate(){
-		//TODO: Loop through the population and set each chromosomes fitness based on its values a,b,c,d
+		int a, b, c, d;
+ 		for(int j = 0; j < population_size; j++){
+ 			a = population[j].getGeneAt(0); // a
+ 			b = population[j].getGeneAt(1); // b
+ 			c = population[j].getGeneAt(2); // c
+ 			d = population[j].getGeneAt(3); // d
+ 			population[j].setFitness(fitness(a,b,c,d));
+ 		}
  	}
 	
 	// Select and combine genetic material
@@ -160,7 +157,6 @@ public class Population{
  		  }
        }
      }
-	
 	 // Carry out mutation on population	 
      public void mutate()
      {
@@ -172,7 +168,6 @@ public class Population{
 		  population[c].mutateGeneAt(g);
        }
      }
-	
 	 // Remove any duplicate chromosomes from population to prevent stagnation
      public void removeDuplicates()
      {
@@ -184,24 +179,28 @@ public class Population{
  				{
  					int g = (int)(chromosome_length * Math.random() * 0.99);
 					population[i].mutateGeneAt(g);
- 					break;
+					break;
  				}
  			}
  		}
      }
-	
 	 // Called to envoke one complete evolution		 
      public void evolve(boolean display)
      {
-		 //TODO: Evaluate, sort, display, crossover, mutate, remove duplicates
-		 // Only call display if display == true
+  	   evaluate();
+  	   sort();
+	   
+	   if (display)
+	   	display();
+	   
+  	   crossover();
+  	   mutate();
+  	   removeDuplicates();
      }
 	 
-	 // Display the population
 	 public void display(){
   		for(int j = 0; j < population_size; j++){
-			System.out.println("Chromosome[" + j + "] = " + population[j].toString() + " Fitness = " + population[j].getFitness());
-		}
+			System.out.println("Chromosome[" + j + "] = " + population[j].toString() + "\tFunc val = " + population[j].func() + "\tFitness = " + population[j].getFitness());  		}
 	 }
 	
 }

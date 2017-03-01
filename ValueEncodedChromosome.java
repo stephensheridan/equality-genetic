@@ -16,55 +16,66 @@ public class ValueEncodedChromosome{
 		this.length = length;
 		this.upper_bound = upper_bound;
 		
-		//TODO
-		// Initialise fitness to high number. Bad fitness to start with
-		// Create the gene array based on length
-		// Initialises the genes to random values between 1 - upper_bound, 30 in this case
+		fitness = 1000; // High number equals low fitness
+
+		// Create the gene array
+		genes = new int[length];
+							
+		// Initialises the genes to random values between 1 - 30
+		Random r = new Random();
+		for(int i = 0; i < length; i++){			
+			genes[i] = r.nextInt(upper_bound - 1) + 1;
+		}
 	}
-	
 	// Returns gene value at given locus
 	public int getGeneAt(int pos){
-		//TODO
+		return genes[pos];
 	}
-	
 	// Used for changing a gene value at given locus in chromosome
 	public void setGeneAt(int pos, int val){
-		//TODO
+		genes[pos] = val;
 	}
-	
 	// Will mutate a gene at given locus based on random value between 1 and upper_bound
 	public void mutateGeneAt(int pos){
-		//TODO
+		Random r = new Random();
+		genes[pos] = r.nextInt(upper_bound - 1) + 1;
 	}
-	
 	// Sets the chromosome length
 	public void setLength(int length){
-		//TODO
+		this.length = length;
 	}
-	
 	// Returns the length of a chromosome
 	public int getLength(){
-		//TODO
+		return length;
 	}
-	
 	// Sets the fitness value for a chromosome
 	public void setFitness(int fitness){
-		//TODO
+		this.fitness = fitness;
 	}
-	
 	// Returns the fitness value for a chromosome
 	public int getFitness(){
-		//TODO
+		return fitness;
 	}
-	
 	// Used to compare chromosomes in order to remove duplicates
 	// Compare this chromosome against argument c
 	public boolean equals(ValueEncodedChromosome c){
-		//TODO
+		boolean same = true;
+		for(int i = 0; i < length && same == true; i++){
+			same = genes[i] == c.getGeneAt(i);
+		}
+		return same;
 	}
-	
 	// Helps to show chromosome values on screen
 	public String toString(){
-		//TODO
+		String s = "";
+		for(int i = 0; i < length; i++){
+			s = s + genes[i] + " ";
+		}
+		return s;
 	}
+	public int func(){
+		int func = Math.abs(genes[0] + (2*genes[1]) + (3*genes[2]) + (4*genes[3]));
+		return func;
+	}
+	
 }
