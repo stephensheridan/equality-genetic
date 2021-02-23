@@ -1,6 +1,8 @@
 // Genetic algorithm for solving a +2b + 3c + 4d = 30
 // S. Sheridan 27/02/2014
-// Institute of Technology Blanchardstown
+// TU Dublin - Blanchardstown Campus
+// Code based on Mark Watsons Genetic Algorithm code
+// https://github.com/mark-watson/Java-AI-Book-Code/tree/master/genetic-algorithms
 
 import java.io.*;
 import java.util.*;
@@ -46,13 +48,13 @@ public class Population{
 	public void buildRouletteWheel(){
         // Build a roulette wheel array for selecting parents
 		rouletteWheelSize = 0;
-        for (int i=0; i < chromosome_length; i++){
+        for (int i=0; i < population_size; i++){
  	   		rouletteWheelSize += i + 1;
         }
         rouletteWheel = new int[rouletteWheelSize];
-        int num_trials = chromosome_length;
+        int num_trials = population_size;
         int index = 0;
-        for (int i=0; i<chromosome_length; i++){
+        for (int i=0; i<population_size; i++){
  		   for (int j=0; j<num_trials; j++){
  			   rouletteWheel[index++] = i;
  		   }
@@ -131,6 +133,8 @@ public class Population{
 	// Select and combine genetic material
 	public void crossover(){
        int num = (int)(population_size-(population_size * crossoverFraction));
+	   // Upper % of the population will be effected by crossover
+	   //for (int i=0; i < num; i++){
 	   // Bottom % of the population will be effected by crossover
 	   for (int i=num; i < population_size; i++){
 		   // Select two parents using roulette wheel 	
